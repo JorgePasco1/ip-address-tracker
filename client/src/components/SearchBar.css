@@ -1,0 +1,35 @@
+:root {
+  --very-dark-gray: hsl(0, 0%, 17%);
+}
+
+.search-bar {
+  width: 90%;
+  max-width: 450px;
+  display: flex;
+}
+
+.search-bar input {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  flex-grow: 1;
+  color: var(--very-dark-gray);
+  cursor: pointer;
+}
+
+.search-bar button {
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding: 15px;
+  background: var(--very-dark-gray);
+  display: grid;
+  place-items: center;
+  border-radius: 0 10px 10px 0;
+}
+
+.search-bar button svg {
+  transform: scale(0.7);
+}
