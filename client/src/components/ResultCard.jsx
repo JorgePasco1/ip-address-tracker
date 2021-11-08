@@ -5,10 +5,10 @@ import './ResultCard.css';
 const ResultCard = ({ ipAddress, location, timezone, isp }) => {
   return (
     <div className="result-card">
-      <CardSection title="ip address">{ipAddress}</CardSection>
-      <CardSection title="location">{location}</CardSection>
-      <CardSection title="timezone">{timezone}</CardSection>
-      <CardSection title="isp">{isp}</CardSection>
+      <CardSection title="ip address">{<p>{ipAddress}</p>}</CardSection>
+      <CardSection title="location">{<p>{location}</p>}</CardSection>
+      <CardSection title="timezone">{<p>{timezone}</p>}</CardSection>
+      <CardSection title="isp">{<p>{isp}</p>}</CardSection>
     </div>
   );
 };

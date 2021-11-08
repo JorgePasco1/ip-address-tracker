@@ -1,11 +1,15 @@
 import Proptypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ReactComponent as RightArrowIcon } from '../icons/icon-arrow.svg';
 import './SearchBar.css';
 
-const SearchBar = ({ initialValue, onSubmit }) => {
+const SearchBar = ({ initialValue, onSubmit, disabled }) => {
   const [inputText, setInputText] = useState(initialValue);
+
+  useEffect(() => {
+    setInputText(initialValue);
+  }, [initialValue]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,9 +23,10 @@ const SearchBar = ({ initialValue, onSubmit }) => {
   return (
     <form className="search-bar" onSubmit={handleSubmit}>
       <input
-        placeholder="Enter an IP address to start"
+        placeholder={disabled ? 'Loading...' : 'Enter an IP address to start'}
         value={inputText}
         onChange={handleInputChange}
+        disabled={disabled}
       />
       <button>
         <RightArrowIcon />
@@ -33,6 +38,7 @@ const SearchBar = ({ initialValue, onSubmit }) => {
 SearchBar.propTypes = {
   onSubmit: Proptypes.func,
   initialValue: Proptypes.string,
+  disabled: Proptypes.bool,
 };
 
 SearchBar.defaultProps = {
@@ -40,6 +46,7 @@ SearchBar.defaultProps = {
     console.log('onSubmit');
   },
   initialValue: '',
+  disabled: false,
 };
 
 export default SearchBar;
