@@ -5,10 +5,16 @@ import './ResultCard.css';
 const ResultCard = ({ ipAddress, location, timezone, isp }) => {
   return (
     <div className="result-card">
-      <CardSection title="ip address">{<p>{ipAddress}</p>}</CardSection>
-      <CardSection title="location">{<p>{location}</p>}</CardSection>
-      <CardSection title="timezone">{<p>{timezone}</p>}</CardSection>
-      <CardSection title="isp">{<p>{isp}</p>}</CardSection>
+      {ipAddress || location || timezone || isp ? (
+        <>
+          <CardSection title="ip address">{<p>{ipAddress}</p>}</CardSection>
+          <CardSection title="location">{<p>{location}</p>}</CardSection>
+          <CardSection title="timezone">{<p>UTC {timezone}</p>}</CardSection>
+          <CardSection title="isp">{<p>{isp}</p>}</CardSection>
+        </>
+      ) : (
+        <p>Enter an IP address to start</p>
+      )}
     </div>
   );
 };
@@ -30,10 +36,10 @@ ResultCard.propTypes = {
 };
 
 ResultCard.defaultProps = {
-  ipAddress: '192.168.1.1',
-  location: 'Brooklyn, NY 10001',
-  timezone: 'UTC -05:00',
-  isp: 'SpaceX Starlink',
+  ipAddress: '',
+  location: '',
+  timezone: '',
+  isp: '',
 };
 
 CardSection.propTypes = {

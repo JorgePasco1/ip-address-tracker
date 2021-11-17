@@ -14,11 +14,10 @@ router.get('/ipInfo', async (req, res) => {
     return `${url}&ipAddress=${ipAddress}`;
   }
 
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const ip = req.query.ipAddress;
   try {
     const reqUrl = concatenateIpParameter(`${IPIFY_API_BASE_URL}?apiKey=${IPIFY_API_KEY}`, ip);
     const response = await axios.get(reqUrl);
-    console.log(response.data)
     res.status(200).json(response.data);
   } catch (e) {
     console.log(e.message);
