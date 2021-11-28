@@ -9,9 +9,17 @@ export const IpContextProvider = ({ children }) => {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    const getIpInfo = async () => {
+    const setInitialIp = async () => {
       setCurrentIpLoading(true);
       setCurrentIp(await getIpAdress());
+    };
+
+    setInitialIp();
+  }, []);
+
+  useEffect(() => {
+    const getIpInfo = async () => {
+      setCurrentIpLoading(true);
       setUserData(await getIpData(currentIp));
       setCurrentIpLoading(false);
     };
@@ -20,7 +28,9 @@ export const IpContextProvider = ({ children }) => {
   }, [currentIp]);
 
   return (
-    <IpContext.Provider value={{ currentIp, setCurrentIp, currentIpLoading, userData }}>
+    <IpContext.Provider
+      value={{ currentIp, setCurrentIp, currentIpLoading, userData }}
+    >
       {children}
     </IpContext.Provider>
   );

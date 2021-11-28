@@ -27,6 +27,7 @@ const SearchBar = ({ initialValue, onSubmit, disabled }) => {
         value={inputText}
         onChange={handleInputChange}
         disabled={disabled}
+        onFocus={(e) => e.target.select()}
       />
       <button>
         <RightArrowIcon />

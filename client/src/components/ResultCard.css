@@ -23,6 +23,7 @@
   width: 100%;
   border-right: 1px solid var(--light-gray);
   margin: 0 15px;
+  padding-right: 5px;
 }
 
 .card-section:last-child {
